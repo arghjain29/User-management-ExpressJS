@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <title>Profile</title>
+</head>
+
+<body class="bg-gradient-to-r from-blue-50 to-green-50 min-h-screen flex flex-col">
+  <!-- Header -->
+  <header class="bg-gradient-to-r from-blue-600 to-blue-700 text-white p-6 shadow-lg">
+    <div class="container mx-auto flex justify-between items-center">
+      <h1 class="text-2xl font-bold">Your Profile</h1>
+      <a href="/logout" class="bg-red-500 hover:bg-red-600 px-4 py-2 rounded-lg shadow">Logout</a>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="container mx-auto mt-12 p-6">
+    <div class="bg-white rounded-lg shadow-lg p-8 max-w-lg mx-auto">
+      <h2 class="text-3xl font-extrabold text-gray-800 mb-6 text-center">
+        Hello, <span class="text-blue-600"><%= user.name %></span>!
+      </h2>
+      <div class="text-gray-700 space-y-6">
+        <!-- Name -->
+        <div class="flex items-center justify-between">
+          <span class="font-semibold text-lg text-gray-800">Name:</span>
+          <span class="text-gray-600 text-lg"><%= user.name %></span>
+        </div>
+
+        <!-- Email -->
+        <div class="flex items-center justify-between">
+          <span class="font-semibold text-lg text-gray-800">Email:</span>
+          <span class="text-gray-600 text-lg"><%= user.email %></span>
+        </div>
+
+        <!-- Phone -->
+        <div class="flex items-center justify-between">
+          <span class="font-semibold text-lg text-gray-800">Phone:</span>
+          <span class="text-gray-600 text-lg"><%= user.phone %></span>
+        </div>
+      </div>
+
+      <!-- Edit Button -->
+      <div class="mt-8 text-center">
+        <a href='/profile/edit' class="bg-yellow-500 text-white px-6 py-3 rounded-lg hover:bg-yellow-600">
+          Edit Profile
+        </a>
+      </div>
+
+      <div class="mt-8 text-center">
+        <a href="/dashboard" class="bg-blue-500 text-white px-6 py-3 rounded-lg hover:bg-blue-600">
+          Back to Dashboard
+        </a>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-gray-800 text-white text-center py-4 mt-10">
+    <p>© 2025 User Management System. All Rights Reserved.</p>
+  </footer>
+</body>
+
+</html>

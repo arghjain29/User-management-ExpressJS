@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
+  <title>Dashboard</title>
+</head>
+
+<body class="bg-gradient-to-r from-blue-50 to-green-50 min-h-screen flex flex-col">
+  <header class="bg-gradient-to-r from-blue-600 to-blue-700 text-white p-6 shadow-lg">
+    <div class="container mx-auto flex justify-between items-center">
+      <h1 class="text-2xl font-bold">User Management Dashboard</h1>
+      <a href="/logout" class="bg-red-500 hover:bg-red-600 px-4 py-2 rounded-lg shadow">Logout</a>
+    </div>
+  </header>
+  <main class="container mx-auto mt-12 p-6">
+
+    <!-- Flash Message Section -->
+    <% if (messages && messages.length > 0) { %>
+      <div class="mb-4">
+        <% messages.forEach(function(message) { %>
+          <div class="bg-green-500 text-white p-4 rounded-lg mb-2 text-center">
+            <%= message %>
+          </div>
+        <% }) %>
+      </div>
+    <% } %>
+
+    <% if (errors && errors.length > 0) { %>
+      <div class="mb-4">
+        <% errors.forEach(function(error) { %>
+          <div class="bg-red-500 text-white p-4 rounded-lg mb-2 text-center">
+            <%= error %>
+          </div>
+        <% }) %>
+      </div>
+    <% } %>
+
+    <h2 class="text-3xl font-extrabold text-gray-800 text-center mb-8">
+      <% if (user.role === 'super-admin') { %>
+        Welcome <span class="text-red-600">Admin</span>, <span class="text-blue-600"><%= user.name %></span>!
+      <% } %>
+      <% if (user.role === 'user') { %>
+        Welcome, <span class="text-blue-600"><%= user.name %></span>!
+      <% } %>
+    </h2>
+    <div class="flex flex-wrap justify-center gap-8">
+      <!-- Profile Section -->
+      <div class="bg-white rounded-lg shadow-lg p-6 hover:shadow-xl transition-shadow duration-300">
+        <h3 class="text-xl font-semibold text-gray-700">Your Profile</h3>
+        <p class="text-gray-600 mt-2">
+          View or update your personal information.
+        </p>
+        <a href="/profile" class="mt-4 inline-block bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600">
+          View Profile
+        </a>
+      </div>
+
+      <% if (user.role === 'super-admin') { %>
+      <!-- Card 2: Manage Users -->
+      <div class="bg-white p-6 rounded-lg shadow hover:shadow-lg transition">
+        <h3 class="text-xl font-semibold text-gray-800 mb-4">All Users</h3>
+        <p class="text-gray-600">Manage registered users.</p>
+        <a href="/admin/users" class="mt-4 inline-block bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600">
+          Manage Users
+        </a>
+      </div>
+      <% } %>
+
+      <!-- Deactivate Account Section -->
+      <div class="bg-white rounded-lg shadow-lg p-6 hover:shadow-xl transition-shadow duration-300">
+        <h3 class="text-xl font-semibold text-gray-700">
+          Deactivate Account
+        </h3>
+        <p class="text-gray-600 mt-2">Permanently deactivate your account.</p>
+        <a href="/deactivate" class="mt-4 inline-block bg-red-500 text-white px-4 py-2 rounded-lg hover:bg-red-600">
+          Deactivate
+        </a>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-gray-800 text-white text-center py-4">
+    <p>© 2025 User Management System. All Rights Reserved.</p>
+  </footer>
+</body>
+
+</html>

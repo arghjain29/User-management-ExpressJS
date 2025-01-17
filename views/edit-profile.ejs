@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <title>Edit Profile</title>
+</head>
+
+<body class="bg-gradient-to-r from-blue-50 to-green-50 min-h-screen flex flex-col">
+  <!-- Header -->
+  <header class="bg-gradient-to-r from-blue-600 to-blue-700 text-white p-6 shadow-lg">
+    <div class="container mx-auto flex justify-between items-center">
+      <h1 class="text-2xl font-bold">Edit Profile</h1>
+      <a href="/logout" class="bg-red-500 hover:bg-red-600 px-4 py-2 rounded-lg shadow">Logout</a>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="container mx-auto mt-12 p-6">
+    <div class="bg-white rounded-lg shadow-lg p-8 max-w-lg mx-auto">
+      <h2 class="text-3xl font-extrabold text-gray-800 mb-6 text-center">Edit Your Profile</h2>
+
+      <form action="/update-profile" method="POST" class="space-y-6">
+        <!-- Name -->
+        <div>
+          <label for="name" class="block text-gray-800 font-semibold">Name</label>
+          <input type="text" id="name" name="name" value="<%= user.name %>" class="w-full p-3 border rounded-md" required>
+        </div>
+
+        <!-- Phone -->
+        <div>
+          <label for="phone" class="block text-gray-800 font-semibold">Phone</label>
+          <input type="text" id="phone" name="phone" value="<%= user.phone %>" class="w-full p-3 border rounded-md" required>
+        </div>
+
+        <!-- Buttons -->
+        <div class="mt-8 text-center space-x-4">
+          <!-- Save Button -->
+          <button type="submit" class="bg-blue-500 text-white px-6 py-3 rounded-lg hover:bg-blue-600">
+            Save Changes
+          </button>
+
+          <!-- Cancel Button -->
+          <a href="/profile" class="bg-gray-500 text-white px-6 py-3 rounded-lg hover:bg-gray-600">
+            Cancel
+          </a>
+        </div>
+      </form>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-gray-800 text-white text-center py-4 mt-10">
+    <p>© 2025 User Management System. All Rights Reserved.</p>
+  </footer>
+</body>
+
+</html>
