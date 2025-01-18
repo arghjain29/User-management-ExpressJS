@@ -22,8 +22,12 @@ router.get('/register', (req, res) => {
 
 router.post('/register', async (req, res) => {
   const { name, email, password, phone } = req.body;
-
   try {
+    if (!name || !email || !password || !phone) {
+      req.flash('error', 'All fields are required');
+      return res.redirect('/register');
+    }
+    
     if (await User.findOne({ email })) {
       req.flash('error', 'Email already exists');
       return res.redirect('/register');
